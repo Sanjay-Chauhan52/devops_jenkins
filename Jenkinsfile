@@ -1,5 +1,6 @@
 pipeline{
-    any agent
+    agent any
+    
     stages{
         stage('docker build'){
             steps{
@@ -19,11 +20,12 @@ pipeline{
                 bat'docker run python-app'
             }
         }
-        post{
+        
+
+    }
+    post{
             always{
                 bat'docker system prune -f'
             }
         }
-
-    }
 }
